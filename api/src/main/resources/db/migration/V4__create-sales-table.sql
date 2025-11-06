@@ -1,12 +1,15 @@
 CREATE TABLE sales (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4 (),
     customer_id uuid REFERENCES people(id),
+
     sale_date timestamp DEFAULT CURRENT_TIMESTAMP,
     subtotal DECIMAL(10, 2) NOT NULL DEFAULT 0,
     discount DECIMAL(10, 2) DEFAULT 0,
     total DECIMAL(10, 2) NOT NULL DEFAULT 0,
+
     status varchar(20) DEFAULT 'PENDING',
     payment_method varchar(50),
+
     notes text,
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp
@@ -18,11 +21,13 @@ CREATE TABLE sale_items (
     sale_id uuid NOT NULL REFERENCES sales (id) ON DELETE CASCADE,
     item_number integer NOT NULL,
     product_id uuid NOT NULL REFERENCES products (id),
+
     quantity DECIMAL(10, 2) NOT NULL,
     unit_price DECIMAL(10, 2) NOT NULL,
     subtotal DECIMAL(10, 2) NOT NULL,
     discount DECIMAL(10, 2) DEFAULT 0,
     total DECIMAL(10, 2) NOT NULL,
+    
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp,
     CONSTRAINT uq_sale_item_number UNIQUE (sale_id, item_number)

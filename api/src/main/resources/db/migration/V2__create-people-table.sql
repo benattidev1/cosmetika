@@ -1,7 +1,7 @@
 CREATE TABLE people (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4 (),
-    legal_name varchar(150) NOT NULL,
-    trade_name varchar(150),
+    legal_name varchar(200) NOT NULL,
+    trade_name varchar(200),
     email varchar(255),
     phone varchar(20),
     document varchar(20),
@@ -9,7 +9,7 @@ CREATE TABLE people (
     is_customer boolean DEFAULT FALSE,
     is_supplier boolean DEFAULT FALSE,
 
-    address varchar(150),
+    address varchar(200),
     city varchar(100),
     state varchar(50),
     zip_code varchar(20),
