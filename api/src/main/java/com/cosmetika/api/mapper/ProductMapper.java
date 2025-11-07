@@ -45,6 +45,38 @@ public class ProductMapper {
         return product;
     }
 
+    public static void updateEntity(Product product, CreateProductRequest request) {
+        if (request.getName() != null)
+            product.setName(request.getName());
+
+        if (request.getDescription() != null)
+            product.setDescription(request.getDescription());
+
+        if (request.getSku() != null)
+            product.setSku(request.getSku());
+
+        if (request.getBarcode() != null)
+            product.setBarcode(request.getBarcode());
+
+        if (request.getCurrentStock() != null)
+            product.setCurrentStock(request.getCurrentStock());
+
+        if (request.getMinStock() != null)
+            product.setMinStock(request.getMinStock());
+
+        if (request.getUnit() != null)
+            product.setUnit(request.getUnit());
+
+        if (request.getCostPrice() != null)
+            product.setCostPrice(request.getCostPrice());
+
+        if (request.getSalePrice() != null)
+            product.setSalePrice(request.getSalePrice());
+
+        if (request.getActive() != null)
+            product.setActive(request.getActive());
+    }
+
     public static ProductResponse toResponse(Product product) {
         return ProductResponse.builder()
                 .id(product.getId())
