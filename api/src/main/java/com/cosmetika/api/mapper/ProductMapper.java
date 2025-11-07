@@ -11,16 +11,37 @@ public class ProductMapper {
 
     public static Product toEntity(CreateProductRequest request) {
         Product product = new Product();
-        product.setName(request.getName());
-        product.setDescription(request.getDescription());
-        product.setSku(request.getSku());
-        product.setBarcode(request.getBarcode());
-        product.setCurrentStock(request.getCurrentStock());
-        product.setMinStock(request.getMinStock());
-        product.setUnit(request.getUnit());
-        product.setCostPrice(request.getCostPrice());
-        product.setSalePrice(request.getSalePrice());
-        product.setActive(request.getActive());
+
+        if (request.getName() != null)
+            product.setName(request.getName());
+
+        if (request.getDescription() != null)
+            product.setDescription(request.getDescription());
+
+        if (request.getSku() != null)
+            product.setSku(request.getSku());
+
+        if (request.getBarcode() != null)
+            product.setBarcode(request.getBarcode());
+
+        if (request.getCurrentStock() != null)
+            product.setCurrentStock(request.getCurrentStock());
+
+        if (request.getMinStock() != null)
+            product.setMinStock(request.getMinStock());
+
+        if (request.getUnit() != null)
+            product.setUnit(request.getUnit());
+
+        if (request.getCostPrice() != null)
+            product.setCostPrice(request.getCostPrice());
+
+        if (request.getSalePrice() != null)
+            product.setSalePrice(request.getSalePrice());
+
+        if (request.getActive() != null)
+            product.setActive(request.getActive());
+
         return product;
     }
 
