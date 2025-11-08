@@ -59,7 +59,7 @@ public class Person {
     private String state;
 
     @Column(name = "zip_code", length = 20)
-    private String zip_code;
+    private String zipCode;
 
     @Column(name = "notes")
     @Lob
