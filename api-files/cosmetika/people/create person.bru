@@ -1,0 +1,34 @@
+meta {
+  name: create person
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BASE_URL}}/people
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "legalName": "GABRIEL WISKY BENATTI",
+    "tradeName": null,
+    "email": null,
+    "phone": null,
+    "document": "999.999.99X-99",
+    "isCustomer": null,
+    "isSupplier": true,
+    "address": null,
+    "city": null,
+    "state": null,
+    "zip_code": null,
+    "notes": null,
+    "active": null
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

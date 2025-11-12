@@ -1,0 +1,20 @@
+meta {
+  name: adjust stock
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{BASE_URL}}/products/66ce1dd9-5191-4525-8e0f-88bef7fd11aa/stock/adjust
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "quantity": 1,
+    "movementType": "OUT",
+    "unitPrice": null,
+    "notes": null
+  }
+}
