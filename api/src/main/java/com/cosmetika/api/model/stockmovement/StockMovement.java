@@ -8,10 +8,12 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.cosmetika.api.model.person.Person;
 import com.cosmetika.api.model.product.Product;
+import com.cosmetika.api.model.sale.Sale;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
@@ -29,6 +31,8 @@ import lombok.NoArgsConstructor;
 public class StockMovement {
 
     @Id
+    @GeneratedValue
+    @Column(name = "id")
     private UUID id;
 
     // @Column(name = "product_id", nullable = false, updatable = false)
@@ -50,7 +54,7 @@ public class StockMovement {
     // private UUID saleId;
 
     @Column(name = "movement_date")
-    private LocalDateTime movementDate;
+    private LocalDateTime movementDate = LocalDateTime.now();
 
     @Column(name = "notes")
     @Lob
@@ -62,11 +66,15 @@ public class StockMovement {
 
     // relationships
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     private Person person;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sale_id")
+    private Sale sale;
 
 }
