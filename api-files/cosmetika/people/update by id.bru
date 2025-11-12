@@ -1,0 +1,29 @@
+meta {
+  name: update by id
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{BASE_URL}}/people/1e9ae08d-0642-4852-9980-fb705d787804
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "legalName": "GAJA COMERCIAL LTDA",
+    "tradeName": null,
+    "email": null,
+    "phone": null,
+    "document": "99.999.999/9999-99",
+    "isCustomer": true,
+    "isSupplier": true,
+    "address": null,
+    "city": null,
+    "state": null,
+    "zipCode": null,
+    "notes": null,
+    "active": true
+  }
+}

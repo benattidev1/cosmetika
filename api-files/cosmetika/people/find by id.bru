@@ -1,0 +1,16 @@
+meta {
+  name: find by id
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{BASE_URL}}/people/1e9ae08d-0642-4852-9980-fb705d787804
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
