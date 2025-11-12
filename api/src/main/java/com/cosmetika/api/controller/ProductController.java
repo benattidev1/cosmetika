@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cosmetika.api.model.product.dto.CreateProductRequest;
 import com.cosmetika.api.model.product.dto.ProductResponse;
+import com.cosmetika.api.model.stockmovement.dto.StockAdjustmentRequest;
+import com.cosmetika.api.model.stockmovement.dto.StockMovementResponse;
 import com.cosmetika.api.service.ProductService;
+import com.cosmetika.api.service.StockMovementService;
 
 @RestController
 @RequestMapping("/api/products")
@@ -25,6 +28,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private StockMovementService movementService;
 
     @PostMapping
     public ResponseEntity<ProductResponse> create(
@@ -58,4 +64,20 @@ public class ProductController {
         productService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{id}/stock/movements")
+    public ResponseEntity<List<StockMovementResponse>> findStockMovements(
+            @PathVariable UUID id) {
+        List<StockMovementResponse> movements = movementService.findByProductId(id);
+        return ResponseEntity.ok(movements);
+    }
+
+    @PostMapping("/{id}/stock/adjust")
+    public ResponseEntity<StockMovementResponse> adjustStock(
+            @PathVariable UUID id,
+            @RequestBody StockAdjustmentRequest request) {
+        StockMovementResponse response = movementService.adjustStock(id, request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
 }
